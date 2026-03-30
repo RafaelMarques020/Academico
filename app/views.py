@@ -6,7 +6,8 @@ from .forms import PessoaForm
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        pessoas = Pessoa.objects.all() 
+        return render(request, 'index.html', {'pessoas': pessoas})
 
 class PessoasView(View):
     def get(self, request, *args, **kwargs):

@@ -1,29 +1,71 @@
-{% extends "index.html" %} {% block content %}
-<div class="container mt-4">
-    <h2>Gerenciar Pessoas</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Cidade</th>
-                <th>Ocupação</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for pessoa in pessoas %}
-            <tr>
-                <td>{{ pessoa.nome }}</td>
-                <td>{{ pessoa.cpf }}</td>
-                <td>{{ pessoa.cidade }}</td>
-                <td>{{ pessoa.ocupacao }}</td>
-                <td>
-                    <a href="{% url 'pessoa_editar' pessoa.id %}" class="btn btn-warning btn-sm">Editar</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Pessoas - Sistema Académico</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a href="/" class="navbar-brand">Académico</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/pessoa/">Pessoas</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/curso/">Cursos</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/admin/">Administração</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Pessoas Registadas (RF01)</h2>
+            <a href="/admin/app/pessoa/add/" class="btn btn-success">Adicionar Nova Pessoa</a>
+        </div>
+
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
+                    <th>Cidade</th>
+                    <th>Ocupação</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.cpf }}</td>
+                    <td>{{ pessoa.email }}</td>
+                    <td>{{ pessoa.cidade.nome }}</td> 
+                    <td>{{ pessoa.ocupacao.nome }}</td> 
+                    <td class="text-center">
+                        <a href="{% url 'pessoa_editar' pessoa.id %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'pessoa_deletar' pessoa.id %}" class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted">
+                        Não existem pessoas registadas no sistema.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Voltar ao Início</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
