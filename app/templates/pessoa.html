@@ -1,0 +1,29 @@
+{% extends "index.html" %} {% block content %}
+<div class="container mt-4">
+    <h2>Gerenciar Pessoas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Cidade</th>
+                <th>Ocupação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+            <tr>
+                <td>{{ pessoa.nome }}</td>
+                <td>{{ pessoa.cpf }}</td>
+                <td>{{ pessoa.cidade }}</td>
+                <td>{{ pessoa.ocupacao }}</td>
+                <td>
+                    <a href="{% url 'pessoa_editar' pessoa.id %}" class="btn btn-warning btn-sm">Editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
