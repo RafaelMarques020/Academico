@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Pessoas - Sistema Académico</title>
+    <title>Gerenciar Turmas - Sistema Acadêmico</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -15,6 +15,7 @@
                 <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/pessoa/">Pessoas</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/curso/">Cursos</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/turmas/">Turmas</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/admin/">Administração</a></li>
             </ul>
         </div>
@@ -22,44 +23,31 @@
 
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Pessoas Registadas (RF01)</h2>
-            <a href="/admin/app/pessoa/add/" class="btn btn-success">Adicionar Nova Pessoa</a>
+            <h2>Turmas Registradas</h2>
+            <a href="/admin/app/turma/add/" class="btn btn-success">Adicionar Nova Turma</a>
         </div>
 
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>Nome</th>
-                    <th>CPF</th>
-                    <th>E-mail</th>
-                    <th>Cidade</th>
-                    <th>Ocupação</th>
                     <th class="text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {% for pessoa in pessoas %}
+                {% for turma in turmas %}
                 <tr>
-                    <td>{{ pessoa.nome }}</td>
-                    <td>{{ pessoa.cpf }}</td>
-                    <td>{{ pessoa.email }}</td>
-                    <td>{{ pessoa.cidade.nome }}</td> 
-                    <td>{{ pessoa.ocupacao.nome }}</td> 
-                    <td class="text-center">
-                        <a href="{% url 'pessoa_editar' pessoa.id %}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="{% url 'pessoa_deletar' pessoa.id %}" class="btn btn-sm btn-danger">Excluir</a>
-                    </td>
+                    <td>{{ turma.nome }}</td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6" class="text-center text-muted">
-                        Não existem pessoas registadas no sistema.
+                    <td colspan="4" class="text-center text-muted">
+                        Não existem turmas registradas no sistema.
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        
         <div class="mt-3">
             <a href="/" class="btn btn-secondary">Voltar ao Início</a>
         </div>

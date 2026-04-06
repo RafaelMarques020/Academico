@@ -30,6 +30,7 @@ urlpatterns = [
     path('cidade/', CidadesView.as_view(), name='cidade'),
     path('instituicao/', InstituicoesView.as_view(), name='instituicao'),
     path('ocupacao/', OcupacoesView.as_view(), name='ocupacao'),
+    path('turmas/', TurmasView.as_view(), name='turmas'),
 ]
 
     

@@ -34,9 +34,14 @@ class OcupacoesView(View):
         ocupacoes = Ocupacao.objects.all()
         return render(request, 'ocupacao.html', {'ocupacoes': ocupacoes})
 
+class TurmasView(View):
+    def get(self, request, *args, **kwargs):
+        turmas = Turma.objects.all()
+        return render(request, 'turmas.html', {'turmas': turmas})
+
 class EditarPessoaView(View):
-    template_name = 'pessoa_form.html'
-    def get(self, request, id, *args, **kwargs):
+    template_name = 'editar_pessoa.html'
+    def get(self, request, id, *args, **kwargs):    
         pessoa = get_object_or_404(Pessoa, id=id)
         form = PessoaForm(instance=pessoa)
         return render(request, self.template_name, {'pessoa': pessoa, 'form': form})

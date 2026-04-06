@@ -41,6 +41,10 @@ class DisciplinaAdmin(admin.ModelAdmin):
     list_display = ('nome', 'area_saber')
     inlines = [AvaliacaoInline] 
 
+class TurmaAdmin(admin.ModelAdmin):
+    list_display = ('nome',)
+    inlines = [PessoaInline]
+
 
 admin.site.register(Cidade, CidadeAdmin)
 admin.site.register(Ocupacao, OcupacaoAdmin)
