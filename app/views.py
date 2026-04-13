@@ -29,6 +29,11 @@ class InstituicoesView(View):
         instituicoes = InstituicaoEnsino.objects.all()
         return render(request, 'instituicao.html', {'instituicoes': instituicoes})
 
+class AreaSaberView(View):
+    def get(self, request, *args, **kargs):
+        areasSaber = AreaSaber.objects.all()
+        return render(request , 'areaSaber.html', {'areasSaber': areasSaber})
+
 class OcupacoesView(View):
     def get(self, request, *args, **kwargs):
         ocupacoes = Ocupacao.objects.all()
@@ -38,6 +43,45 @@ class TurmasView(View):
     def get(self, request, *args, **kwargs):
         turmas = Turma.objects.all()
         return render(request, 'turmas.html', {'turmas': turmas})
+
+class AvaliacoesView(View):
+    def get(self, request, *args, **kwargs):
+        avaliacoes = Avaliacao.objects.all()
+        return render(request, 'avaliacoes.html', {'avaliacoes': avaliacoes})
+
+
+class FrequenciasView(View):
+    def get(self, request, *args, **kwargs):
+        frequencias = Frequencia.objects.all()
+        return render(request, 'frequencias.html', {'frequencias': frequencias})
+
+
+class TurnosView(View):
+    def get(self, request, *args, **kwargs):
+        turnos = Turno.objects.all()
+        return render(request, 'turnos.html', {'turnos': turnos})
+
+
+class OcorrenciasView(View):
+    def get(self, request, *args, **kwargs):
+        ocorrencias = Ocorrencia.objects.all()
+        return render(request, 'ocorrencias.html', {'ocorrencias': ocorrencias})
+
+
+class TiposAvaliacaoView(View):
+    def get(self, request, *args, **kwargs):
+        tipos = TipoAvaliacao.objects.all()
+        return render(request, 'tipos_avaliacao.html', {'tipos': tipos})
+
+class MatriculaView(View):
+    def get(self, request, *args, **kwargs):
+        matriculas = Matricula.objects.all()
+        return render(request, 'matriculas.html', {'matriculas': matriculas})
+    
+class DisciplinasView(View):
+    def get(self, request, *args, **kwargs):
+        disciplinas = Disciplina.objects.all()
+        return render(request, 'disciplinas.html', {'disciplinas': disciplinas})
 
 class EditarPessoaView(View):
     template_name = 'editar_pessoa.html'
